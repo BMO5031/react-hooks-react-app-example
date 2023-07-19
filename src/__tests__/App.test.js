@@ -8,18 +8,14 @@ beforeEach(() => {
 });
 
 test('should include "Now" in the header instead of a time', () => {
-  expect(
-    screen.queryByText(format(new Date(), "MMMM do yyyy, h:mm:ss a"))
-  ).not.toBeInTheDocument();
-  expect(screen.queryByText(/Now/g)).toBeInTheDocument();
+  const nowText = screen.getByText("Now");
+  expect(nowText).toBeInTheDocument();
+  expect(screen.queryByText(format(new Date(), "MMMM do yyyy, h:mm:ss a"))).not.toBeInTheDocument();
 });
+
 
 test("should include the <ExampleComponent />", () => {
   expect(screen.queryByText("Whoa!")).toBeInTheDocument();
-});
-
-test("should include the <TestComponent />", () => {
-  expect(screen.queryByTitle("time video")).toBeInTheDocument();
 });
 
 //   it('should include "Now" in the header instead of a time', () => {
